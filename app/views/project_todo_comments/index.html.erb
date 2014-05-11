@@ -1,0 +1,29 @@
+<h1>Listing project_todo_comments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comment</th>
+      <th>Project todo</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @project_todo_comments.each do |project_todo_comment| %>
+      <tr>
+        <td><%= project_todo_comment.comment %></td>
+        <td><%= project_todo_comment.project_todo_id %></td>
+        <td><%= link_to 'Show', project_project_todo_project_todo_comment_path(@project, @project_todo, project_todo_comment) %></td>
+        <td><%= link_to 'Edit', edit_project_project_todo_project_todo_comment_path(@project, @project_todo, project_todo_comment) %></td>
+        <td><%= link_to 'Destroy', [@project, @project_todo, project_todo_comment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Project todo comment', new_project_project_todo_project_todo_comment_path(@project, @project_todo) %>

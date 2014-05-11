@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="projectApp">
+<head>
+  <title>Projectapp</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  
+  <div class="container" ng-controller="ProjectsController">
+    <%= yield %>
+    
+    <br/><br/>
+    <%= params.inspect %>
+  </div>
+
+
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0-beta.3/angular-resource.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0-beta.3/angular-route.js"></script>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
+</body>
+</html>

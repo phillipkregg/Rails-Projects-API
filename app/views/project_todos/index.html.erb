@@ -1,0 +1,29 @@
+<h1>Listing project_todos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Project</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @project_todos.each do |project_todo| %>
+      <tr>
+        <td><%= project_todo.title %></td>
+        <td><%= project_todo.project_id %></td>
+        <td><%= link_to 'Show', project_project_todo_path(@project, project_todo) %></td>
+        <td><%= link_to 'Edit', edit_project_project_todo_path(@project, project_todo) %></td>
+        <td><%= link_to 'Destroy', [@project, project_todo], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Project todo', new_project_project_todo_path(@project) %>

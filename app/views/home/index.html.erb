@@ -1,0 +1,48 @@
+
+<h2>{{ heading }}</h2>
+<hr>
+
+<div class="row">
+  <div class="col-md-12">
+    <form role="form" ng-submit="create()">
+      <div class="form-group">
+        <label for="title">Project Title</label>
+        <input type="title" class="form-control" id="title" placeholder="Enter Project Title" ng-model="newProject.title">        
+      </div>   
+      <button type="submit" class="btn btn-warning">Create Project</button>
+    </form>  
+  </div>  
+  
+</div>
+
+<p>{{newProject.title | titleize}}</p>
+
+
+ 
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-bordered table-striped">
+      <thead>      
+        <tr>
+          <th>ID</th>
+          <th>Project Title</th>
+          <th>Actions</th>
+        </tr>
+        
+      </thead>
+      <tbody>
+        <tr ng-repeat="project in projects">
+          <td>{{ project.id }}</td>
+          <td>{{ project.title }}</td>
+          <td>
+            <button class="btn btn-xs btn-default">view details</button>
+            <button class="btn btn-xs btn-danger">delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
