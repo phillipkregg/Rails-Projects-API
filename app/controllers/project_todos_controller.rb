@@ -10,7 +10,7 @@ class ProjectTodosController < ApplicationController
   def index
     @project_todos = @project.project_todos.all
     
-    render :json => @project_todos
+    #render :json => @project_todos
     
   end
 
