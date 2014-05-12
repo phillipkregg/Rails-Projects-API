@@ -2,11 +2,15 @@ class ProjectTodosController < ApplicationController
   before_action :set_project_todo, only: [:show, :edit, :update, :destroy]
   
   before_filter :load_project
+  
+   respond_to :html, :xml, :json
 
   # GET /project_todos
   # GET /project_todos.json
   def index
     @project_todos = @project.project_todos.all
+    
+    render :json => @project_todos
     
   end
 

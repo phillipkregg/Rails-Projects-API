@@ -14,6 +14,14 @@ class ProjectsController < ApplicationController
     @project_todo = ProjectTodo.new
     # Display the form to create a new comment
     @project_todo_comment = ProjectTodoComment.new
+    
+    render json: @project,
+    :include => {
+      :project_todos => {
+        :include => :project_todo_comments
+        }
+      }
+    
   end
 
   # GET /projects/new

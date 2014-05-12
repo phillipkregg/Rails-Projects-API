@@ -3,10 +3,12 @@
 var projectApp = angular.module('projectApp', ['ngResource']);
 
 // Controllers
-projectApp.controller('ProjectsController', ['$scope', 'Project', function($scope, Project) {
+projectApp.controller('ProjectsController', ['$scope', 'Projects', 'Project', 'ProjectTodos', function($scope, Projects, Project, ProjectTodos) {
   $scope.heading = "Angular Projects";
   
-  $scope.projects = Project.query();
+  $scope.projects = Projects.query();
+  $scope.project = Project.query({ projectId: 1 });
+  $scope.todos = ProjectTodos.query();
   
   $scope.newProject = {
     title: 'a default title'
@@ -25,9 +27,17 @@ projectApp.controller('ProjectsController', ['$scope', 'Project', function($scop
 
 
 // Service
-projectApp.factory('Project', ['$resource', function($resource) {
+projectApp.factory('Projects', ['$resource', function($resource) {
   return $resource('/projects.json');
-}])
+}]);
+
+projectApp.factory('Project', ['$resource', function($resource) {
+  return $resource('/projects/:projectId', { projectId: '@id' }, {'query': { method: 'GET', isArray: false }});
+}]);
+
+projectApp.factory('ProjectTodos', ['$resource', function($resource) {
+  return $resource('/projects/:project_id/project_todos.json', { projectId: '@id'}, {'query': { method: 'GET', isArray: true }});
+}]);
 
 
 // Filters

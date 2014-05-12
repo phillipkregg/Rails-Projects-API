@@ -16,8 +16,6 @@
 </div>
 
 <p>{{newProject.title | titleize}}</p>
-
-
  
 
 <div class="row">
@@ -45,4 +43,11 @@
   </div>
 </div>
 
+
+<div class="well">
+  <p>{{ project.title }}</p>
+  <ul>
+    <li ng-repeat="todo in todos">{{ todo.title }}</li>
+  </ul>
+</div>
 
